@@ -25,10 +25,15 @@ export default defineConfig({
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    /* Base URL to use in actions like `await page.goto('/')`. */
-    // baseURL: 'http://127.0.0.1:3000',
-
-    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
+    baseURL: 'https://jsonplaceholder.typicode.com/todos',
+    extraHTTPHeaders: {
+      'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+      'Accept-Encoding': 'gzip, deflate, br',
+      'Accept-Language': 'en-US,en;q=0.9',
+      'Cache-Control': 'max-age=0',
+      'Cookie': '_ga_E3C3GCQVBN=GS1.1.1745426410.1.1.1745427178.0.0.0; _ga=GA1.1.1577020976.1745426411',
+      'If-None-Match': 'W/"5ef7-4Ad6/n39KWY9q6Ykm/ULNQ2F5IM"',
+    },
     trace: 'on-first-retry',
   },
 
@@ -39,17 +44,7 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
 
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
-
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
-
-    /* Test against mobile viewports. */
+    //* Test against mobile viewports. */
     // {
     //   name: 'Mobile Chrome',
     //   use: { ...devices['Pixel 5'] },
